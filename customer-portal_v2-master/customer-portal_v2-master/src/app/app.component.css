@@ -1,0 +1,13 @@
+/* styles.css or app.component.css */
+.header {
+    background-color: #007bff;
+    color: white;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+  }
+  

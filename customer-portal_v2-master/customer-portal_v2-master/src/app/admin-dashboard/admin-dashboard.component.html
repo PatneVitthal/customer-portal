@@ -1,0 +1,24 @@
+<div class="dashboard-container">
+    <h2>Admin Dashboard</h2>
+    <button (click)="logout()">Logout</button>
+    <button (click)="openCreateCustomerModal()">Add Customer</button>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Portal Username</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of customers">
+          <td>{{ customer.name }}</td>
+          <td>{{ customer.portal_username }}</td>
+          <td>
+            <button (click)="editCustomer(customer)">Edit</button>
+            <button (click)="deleteCustomer(customer.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

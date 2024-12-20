@@ -1,0 +1,191 @@
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<div class="dashboard-container">
+  <!-- Header Section -->
+  <header class="header">
+    <div class="logo">
+      <h3>Mauijim</h3>
+    </div>
+    <div class="good-morning">
+      <p class="welcome-text">Good Morning, <span class="text-black fw-bold">John Doe</span></p>
+    </div>
+    <div class="user-profile">
+      <div class="profile-info" (click)="togglePopup()">
+        <span class="username">{{ customer.name }}</span>
+        <i class="fa-solid fa-user"></i>
+        
+      </div>
+      <div *ngIf="isPopupOpen" class="popup">
+        
+        <!-- Add your popup content here -->
+        <div class="dropdown">
+          
+          <div class="dropdown-menu dropdown-menu-right navbar-dropdown show" aria-labelledby="UserDropdown" data-bs-popper="static">
+              <div class="dropdown-header text-center">
+                  <img class="img-md rounded-circle" src="../../assets/images/faces/face8.jpg" alt="Profile image">
+                  <p class="mb-1 mt-3 fw-semibold">Allen Moreno</p>
+                 
+              </div>
+              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
+              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i> Messages</a>
+              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i> Activity</a>
+              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i> FAQ</a>
+              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
+              
+          </div>
+      </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Left Side Navigation Bar -->
+  <div class="sidebar">
+    
+    <nav>
+      <ul>
+        <li><button (click)="showView('dashboard')" [class.active]="currentView === 'dashboard'">Dashboard</button></li>
+        <li><button (click)="showView('profile')" [class.active]="currentView === 'profile'">Profile</button></li>
+        <li><button (click)="showView('uploadFeed')" [class.active]="currentView === 'uploadFeed'">Upload Feed File</button></li>
+        <li><button (click)="showView('downloadSample')" [class.active]="currentView === 'downloadSample'">Download Sample Feed</button></li>
+        <li><button (click)="logout()" class="logout-btn">Logout</button></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Right Side Content Area -->
+  <div class="content">
+    <div *ngIf="currentView === 'dashboard'">
+      <h1>Welcome to the Customer Portal!</h1>
+
+      <p>We’re excited to provide you with a range of functionalities to streamline your experience. Here’s a quick overview of what you can do:</p>
+  
+      <div class="section">
+          <h2>Upload Feed File</h2>
+          <ul class="list">
+              <li>Upload store details into the database with ease.</li>
+              <li>View and filter recent files uploaded in this section.</li>
+          </ul>
+      </div>
+  
+      <div class="section">
+          <h2>Download Sample CSV</h2>
+          <ul class="list">
+              <li>Download a sample CSV file to help you prepare store data.</li>
+              <li>Once ready, upload the file directly through the portal.</li>
+          </ul>
+      </div>
+  
+      <div class="section">
+          <h2>Profile Details</h2>
+          <p>View and update your profile information for a personalized experience.</p>
+      </div>
+  
+      <div class="section">
+          <h2>Login/Logout</h2>
+          <p>Securely log in and out of the portal to manage your activities.</p>
+      </div>
+  
+      <p>Explore and enjoy the features at your convenience. If you need assistance, feel free to reach out!</p>
+
+      <!--       
+      <h2>Welcome, {{ customer.name }}</h2>
+      <p>{{ customer.greeting_message }}</p>
+      <div>
+        <h3>Chatbot Configuration</h3>
+        <p><strong>Prompt:</strong> {{ customer.chatbot_prompt }}</p>
+        <p><strong>Greeting Message:</strong> {{ customer.greeting_message }}</p>
+        <p><strong>Client Id:</strong> {{ customer.secret_client_id }}</p>
+        <p><strong>Secret Key:</strong> {{ customer.secret_key }}</p>
+      </div> -->
+    </div>
+
+    <div *ngIf="currentView === 'profile'">
+      <h2>Profile Details</h2>
+      <p>Your profile information goes here.</p>
+    </div>
+
+    <div *ngIf="currentView === 'uploadFeed'">
+      <h2>Upload a File</h2>
+      <form (submit)="uploadFile()">
+        <input type="file" (change)="onFileSelected($event)" required accept=".csv" />
+        <button type="submit" [disabled]="!selectedFile">Upload</button>
+        
+      </form>
+      
+      <p *ngIf="uploadStatus">{{ uploadStatus }}</p>
+      <div class="table-container">
+        <h3>Recently Updated Stores</h3>
+      
+        <!-- Filter -->
+        <mat-form-field >
+          <mat-label>Search</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Filter stores">
+        </mat-form-field>
+      
+        <!-- Table -->
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+          </ng-container>
+      
+          <!-- Display Name Column -->
+          <ng-container matColumnDef="display_name">
+            <th mat-header-cell *matHeaderCellDef> Display Name </th>
+            <td mat-cell *matCellDef="let element"> {{ element.display_name }} </td>
+          </ng-container>
+      
+          <!-- Address Column -->
+          <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef> Address </th>
+            <td mat-cell *matCellDef="let element"> {{ element.address }} </td>
+          </ng-container>
+      
+          <!-- Latitude Column -->
+          <ng-container matColumnDef="latitude">
+            <th mat-header-cell *matHeaderCellDef> Latitude </th>
+            <td mat-cell *matCellDef="let element"> {{ element.latitude }} </td>
+          </ng-container>
+      
+          <!-- Longitude Column -->
+          <ng-container matColumnDef="longitude">
+            <th mat-header-cell *matHeaderCellDef> Longitude </th>
+            <td mat-cell *matCellDef="let element"> {{ element.longitude }} </td>
+          </ng-container>
+      
+          <!-- Email Column -->
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let element"> {{ element.email }} </td>
+          </ng-container>
+      
+          <!-- Fax Column -->
+          <ng-container matColumnDef="fax">
+            <th mat-header-cell *matHeaderCellDef> Fax </th>
+            <td mat-cell *matCellDef="let element"> {{ element.fax }} </td>
+          </ng-container>
+      
+          <!-- Table Headers and Rows -->
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      
+        <!-- Pagination -->
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+      </div>
+      
+    </div>
+
+    <div *ngIf="currentView === 'downloadSample'">
+      <h2>Download Sample Feed</h2>
+      <button (click)="downloadSampleCsv()">Download CSV</button>
+    </div>
+  </div>
+
+</div>
+
+
