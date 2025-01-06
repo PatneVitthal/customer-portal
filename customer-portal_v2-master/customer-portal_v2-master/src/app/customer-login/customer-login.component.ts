@@ -18,7 +18,8 @@ export class CustomerLoginComponent {
   login(): void {
     this.authService.login(this.username, this.password, 'customer').subscribe(
       (response) => {
-        this.authService.setToken(response.token, 'customer');
+        
+        this.authService.setToken(response.token, 'customer', response.customer[0].name);
         this.router.navigate(['/customer/dashboard']);
       },
       (error) => {

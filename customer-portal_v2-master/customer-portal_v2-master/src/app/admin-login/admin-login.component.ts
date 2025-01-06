@@ -18,7 +18,7 @@ export class AdminLoginComponent {
   login(): void {
     this.authService.login(this.username, this.password, 'admin').subscribe(
       (response) => {
-        this.authService.setToken(response.token, 'admin');
+        this.authService.setToken(response.token, 'admin',response.customer[0].name);
         this.router.navigate(['/admin/dashboard']);
       },
       (error) => {

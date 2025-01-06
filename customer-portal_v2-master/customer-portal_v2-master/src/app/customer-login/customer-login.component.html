@@ -1,24 +1,23 @@
-
-<body>
-<div class="login-container">
-    <div class="login-header">
-      <h2>Welcome to StartAdmin</h2>
-      <p>Please log in to continue</p>
+<body class="box-wrapper">
+  <div class="login-container">
+      <div class="login-header">
+        <div class="login-heading">Welcome to   <img class="img-fluid" src="media/new-mj-updated-brand-logo.webp" alt="mj logo"> </div>
+        <p>Please log in to continue</p>
+      </div>
+     
+        <div class="form-group">
+          <input [(ngModel)]="username" placeholder="Username"  class="input-field"/>
+        </div>
+        <div class="form-group">
+          <input [(ngModel)]="password" placeholder="Password" type="password"  class="input-field" />
+        </div>
+        <div class="form-group">
+          <button (click)="login()" class="btn-primary">Login</button>
+      <div class="login-error" *ngIf="errorMessage">{{ errorMessage }}</div>
+        </div>
+        <div class="text-center">
+          <a href="/forgot-password">Forgot password?</a>
+        </div>
+     
     </div>
-    
-      <div class="form-group">
-        <input [(ngModel)]="username" placeholder="Username" />
-      </div>
-      <div class="form-group">
-        <input [(ngModel)]="password" placeholder="Password" type="password" />
-      </div>
-      <div class="form-group">
-        <button (click)="login()">Login</button>
-    <div *ngIf="errorMessage">{{ errorMessage }}</div>
-      </div>
-      <div class="text-center">
-        <a href="/forgot-password">Forgot password?</a>
-      </div>
-    
-  </div>
-</body>
+  </body>

@@ -20,15 +20,19 @@ export class AuthService {
     return this.http.post<any>(url, { username, password });
   }
 
-  setToken(token: string, role: string): void {
+  setToken(token: string, role: string,customerName: string): void {
     localStorage.setItem('auth_token', token);
     localStorage.setItem('user_role', role);
+    localStorage.setItem('customerName',customerName)
   }
 
   getToken(): string | null {
     return localStorage.getItem('auth_token');
   }
 
+getCustomerName(): string | null {
+    return localStorage.getItem('customerName');
+  }
   getRole(): string | null {
     return localStorage.getItem('user_role');
   }
@@ -40,6 +44,7 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('auth_token');
     localStorage.removeItem('user_role');
+    localStorage.removeItem('customerName');
     this.router.navigate(['/']);
   }
 }

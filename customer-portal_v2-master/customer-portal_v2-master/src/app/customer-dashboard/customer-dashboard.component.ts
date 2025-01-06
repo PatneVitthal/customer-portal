@@ -14,6 +14,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class CustomerDashboardComponent implements OnInit {
   currentView: string = 'dashboard';  // Default view is 'dashboard'
   isPopupOpen = false;
+  customerName: string | null = null;
   customer: any = {};
   selectedFile: File | null = null;
   uploadStatus: string = '';
@@ -43,6 +44,7 @@ export class CustomerDashboardComponent implements OnInit {
   ngOnInit(): void {
     this.loadCustomerDetails();
     this.loadRecentStores();
+    this.customerName = localStorage.getItem('customerName');
   }
 
   loadCustomerDetails(): void {
