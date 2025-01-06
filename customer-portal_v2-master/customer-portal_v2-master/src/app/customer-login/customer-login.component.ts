@@ -20,7 +20,8 @@ export class CustomerLoginComponent {
       (response) => {
         
         this.authService.setToken(response.token, 'customer', response.customer[0].name);
-        this.router.navigate(['/customer/dashboard']);
+        this.router.navigate(['customer/select-portal']);
+        //this.router.navigate(['/customer/dashboard']);
       },
       (error) => {
         this.errorMessage = 'Invalid credentials';

@@ -5,13 +5,14 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AuthGuard } from './auth.guard';
 import { CustomerDashboardComponent } from './customer-dashboard/customer-dashboard.component';
 import { CustomerLoginComponent } from './customer-login/customer-login.component';
-
+import { SelectPortalComponent} from './select-portal/select-portal.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'customer/login', pathMatch: 'full' },
   { path: 'admin/login', component: AdminLoginComponent },
   { path: 'customer/login', component: CustomerLoginComponent },
+  {path: 'customer/select-portal',component:SelectPortalComponent},
   { path: 'admin/dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard], data: { role: 'admin' } },
   { path: 'customer/dashboard', component: CustomerDashboardComponent, canActivate: [AuthGuard], data: { role: 'customer' } },
   { path: '**', redirectTo: 'customer/login' },

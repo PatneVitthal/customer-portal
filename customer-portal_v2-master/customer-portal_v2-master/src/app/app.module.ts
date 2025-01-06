@@ -4,6 +4,7 @@ import { AdminDashboardModule } from './admin-dashboard/admin-dashboard.module';
 import { AdminLoginModule } from './admin-login/admin-login.module';
 import { CustomerDashboardModule } from './customer-dashboard/customer-dashboard.module';
 import { CustomerLoginModule } from './customer-login/customer-login.module';
+import { SelectPortalComponent } from './select-portal/select-portal.component';
 import { AppComponent } from './app.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
@@ -35,6 +36,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AdminDashboardModule,
     AdminLoginModule,
     AppRoutingModule,
+    SelectPortalComponent,
     CustomerDashboardModule,
     CustomerLoginModule,
     HttpClientModule,
