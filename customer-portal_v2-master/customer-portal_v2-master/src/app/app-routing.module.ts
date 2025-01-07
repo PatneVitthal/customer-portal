@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'customer/login', pathMatch: 'full' },
   { path: 'admin/login', component: AdminLoginComponent },
   { path: 'customer/login', component: CustomerLoginComponent },
-  {path: 'customer/select-portal',component:SelectPortalComponent},
+  {path: 'customer/select-portal',component:SelectPortalComponent, canActivate:[AuthGuard]},
   { path: 'admin/dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard], data: { role: 'admin' } },
   { path: 'customer/dashboard', component: CustomerDashboardComponent, canActivate: [AuthGuard], data: { role: 'customer' } },
   { path: '**', redirectTo: 'customer/login' },
