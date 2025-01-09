@@ -30,7 +30,7 @@ export class AuthService {
     return localStorage.getItem('auth_token');
   }
 
-getCustomerName(): string | null {
+  getCustomerName(): string | null {
     return localStorage.getItem('customerName');
   }
   getRole(): string | null {

@@ -22,8 +22,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
+import { NgChartsModule } from 'ng2-charts';
+import { VisitPerDayComponent } from './progress-bar/visit-perday.component';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -35,6 +36,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     AdminDashboardModule,
     AdminLoginModule,
+    MatIconModule,
     AppRoutingModule,
     SelectPortalComponent,
     CustomerDashboardModule,
@@ -44,7 +46,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatPaginatorModule,
     MatSortModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgChartsModule,
+    VisitPerDayComponent
   ],
   providers: [
     AuthService,  // Provide services

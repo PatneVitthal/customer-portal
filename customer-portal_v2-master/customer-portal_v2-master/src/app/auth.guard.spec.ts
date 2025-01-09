@@ -3,7 +3,6 @@ import { CanActivateFn } from '@angular/router';
 
 import { authGuard } from './auth.guard';
 
-
 describe('authGuard', () => {
   const executeGuard: CanActivateFn = (...guardParameters) => 
       TestBed.runInInjectionContext(() => authGuard(...guardParameters));
