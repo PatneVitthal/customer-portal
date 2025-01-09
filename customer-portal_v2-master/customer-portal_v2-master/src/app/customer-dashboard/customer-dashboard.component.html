@@ -1,8 +1,9 @@
+
 <link
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
   rel="stylesheet"
 />
- 
+
 <div class="dashboard-container">
   <!-- Header Section -->
   <header class="header">
@@ -43,7 +44,7 @@
             </div>
             <a class="dropdown-item"
               ><i
-                class="dropdown-item-icon mdi mdi-account-outline text-primary me-2" 
+                class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"
               ></i>
               My Profile <span class="badge badge-pill badge-danger">1</span></a
             >
@@ -74,7 +75,7 @@
       </div>
     </div>
   </header>
- 
+
   <!-- Left Side Navigation Bar -->
   <div class="sidebar">
     <nav>
@@ -115,77 +116,183 @@
       </ul>
     </nav>
   </div>
- 
+
   <!-- Right Side Content Area -->
-  <div class="content-wrapper">
+ <div class="content-wrapper">
     <div class="content">
       <div *ngIf="currentView === 'dashboard'">
-        <h1>Welcome to the Customer Portal!</h1>
- 
-        <p>
-          We’re excited to provide you with a range of functionalities to
-          streamline your experience. Here’s a quick overview of what you can
-          do:
-        </p>
-        <div class="card-wrapper">
-        <div class="card">
-          <div class="card-body">
-            <div class="section">
-              <h2 class="text-center"> <i class="fa-solid fa-upload"></i> Upload Feed File</h2>
-              <ul class="list">
-                <li class="list-item">Upload store details into the database with ease.</li>
-                <li class="list-item">View and filter recent files uploaded in this section.</li>
-              </ul>
+<div class="home-tab">
+  <div class="tab-content tab-content-basic">
+    <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="statistics-details d-flex align-items-center justify-content-between">
+            <div>
+              <p class="statistics-title">Total Visits on Page</p>
+              <h3 class="rate-percentage">3298</h3>
+              <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>100</span></p>
+            </div>
+            <div>
+              <p class="statistics-title">Store Detail Views</p>
+              <h3 class="rate-percentage">7,682</h3>
+              <p class="text-success d-flex"><i class="mdi mdi-menu-up"></i><span>300</span></p>
+            </div>
+            <div>
+              <p class="statistics-title">Call from Site</p>
+              <h3 class="rate-percentage">680</h3>
+              <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>50</span></p>
+            </div>
+            <div class="d-none d-md-block">
+              <p class="statistics-title">Direction from Site</p>
+              <h3 class="rate-percentage">1234</h3>
+              <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>123</span></p>
+            </div>
+            <div class="d-none d-md-block">
+              <p class="statistics-title">Avg. Time on Site</p>
+              <h3 class="rate-percentage">2m:35s</h3>
+              <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+50 s</span></p>
+            </div>
+            <div class="d-none d-md-block">
+              <p class="statistics-title">Bounce Rate </p>
+              <h3 class="rate-percentage">345</h3>
+              <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>12</span></p>
             </div>
           </div>
         </div>
-        <div class="card">
+      </div>
+      <div class="row">
+        <div class="col-lg-8 d-flex flex-column">
+          <div class="row flex-grow">
+            <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
+              <div class="card card-rounded">
+                <div class="card-body">
+                  <div class="d-sm-flex justify-content-between align-items-start">
+                    <div>
+                      <h4 class="card-title card-title-dash">Performance Line Chart</h4>
+                      <h5 class="card-subtitle card-subtitle-dash">Lorem Ipsum is simply dummy text of the printing</h5>
+                    </div>
+                    <div id="performanceLine-legend"></div>
+                  </div>
+                  <div class="chartjs-wrapper mt-4">
+                    <canvas
+                    baseChart
+                    [data]="performanceLineChartData"
+                    [options]="performanceLineChartOptions"
+                    [legend]="true"
+                    [type]="performanceLineChartType">
+                </canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 d-flex flex-column">
+          <div class="row flex-grow">
+            <div class="col-md-6 col-lg-12 grid-margin stretch-card">
+              <div class="card bg-primary card-rounded">
+                <div class="card-body pb-0">
+                  <h4 class="card-title card-title-dash text-white mb-4">Most Visited Store</h4>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <p class="status-summary-ight-white mb-1">SUN LOGIC</p>
+                      <p class="status-summary-ight-white mb-1">421 MAIN, BRECKENRIDGE, Colorado, 80424-7998, United States</p>
+                      <p class="card-title card-title-dash text-white mb-4 status-summary-ight-green mb-1 fw-bold ">Count: 6543</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-12 grid-margin stretch-card">
+              <div class="card card-rounded">
+                <div class="card-body">
+                  <app-visitper-day></app-visitper-day>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+  <div class="col-lg-8 d-flex flex-column">
+    <div class="row flex-grow">
+      <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
+        <div class="card card-rounded">
           <div class="card-body">
-        <div class="section">
-          <h2 class="text-center"> <i class="fa-solid fa-download"></i> Download Sample CSV</h2>
-          <ul class="list">
-            <li class="list-item">Download a sample CSV file to help you prepare store data.</li>
-            <li class="list-item">Once ready, upload the file directly through the portal.</li>
-          </ul>
-        </div>
-        </div>
+            <div class="d-sm-flex justify-content-between align-items-start">
+              <div>
+                <h4 class="card-title card-title-dash">Performance Line Chart</h4>
+                <h5 class="card-subtitle card-subtitle-dash">Select a country to view its data</h5>
+              </div>
+              <div>
+                <select
+                  class="form-select"
+                  [(ngModel)]="selectedCountry"
+                  (change)="onCountryChange($event)"
+                >
+                  <option *ngFor="let country of countries" [value]="country">
+                    {{ country }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="chartjs-wrapper mt-4">
+              <canvas
+                baseChart
+                [data]="chartData"
+                [options]="chartOptions"
+                [legend]="true"
+                [type]="chartType"
+              ></canvas>
+            </div>
+          </div>
         </div>
       </div>
-        <div class="section">
-          <h2> <i class="fa-regular fa-user"></i> Profile Details</h2>
-          <p>
-            View and update your profile information for a personalized
-            experience.
-          </p>
-        </div>
- 
-        <div class="section">
-          <h2><i class="fa fa-sign-in" aria-hidden="true"></i> Login/Logout</h2>
-          <p>
-            Securely log in and out of the portal to manage your activities.
-          </p>
-        </div>
- 
-        <p>
-          Explore and enjoy the features at your convenience. If you need
-          assistance, feel free to reach out!
-        </p>
- 
-        <!--      
-      <h2>Welcome, {{ customer.name }}</h2>
-      <p>{{ customer.greeting_message }}</p>
-      <div>
-        <h3>Chatbot Configuration</h3>
-        <p><strong>Prompt:</strong> {{ customer.chatbot_prompt }}</p>
-        <p><strong>Greeting Message:</strong> {{ customer.greeting_message }}</p>
-        <p><strong>Client Id:</strong> {{ customer.secret_client_id }}</p>
-        <p><strong>Secret Key:</strong> {{ customer.secret_key }}</p>
-      </div> -->
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</div>
+</div>
+<div *ngIf="currentView === 'profile'">
+  <div class="profile-page">
+    <div class="profile-header">
+      <div class="profile-picture">
+        <img src="media/face8.jpg" alt="Profile Picture" />
       </div>
- 
-      <div *ngIf="currentView === 'profile'">
-        <h2>Profile Details</h2>
-        <p>Your profile information goes here.</p>
+      <div class="profile-details">
+        <h1>Vitthal Patne</h1>
+        <p class="email">{{ customer.email }}</p>
+        <button class="edit-profile-btn">Edit Profile</button>
+      </div>
+    </div>
+    <div class="profile-body">
+      <div class="profile-section">
+        <h2>Personal Information</h2>
+        <ul>
+          <li><strong>Full Name:</strong> Vitthal Patne</li>
+          <li><strong>Email:</strong> vitthalpat05&#64;gmail.com</li>
+          <li><strong>Phone:</strong> +1 626-209-2492</li>
+          <li><strong>Address:</strong> 4143 Rainbow Road, Anaheim, California, 92801,United States</li>
+        </ul>
+      </div>
+      <div class="profile-section">
+        <h2>Account Settings</h2>
+        <ul>
+          <li><strong>Username:</strong> vitthal</li>
+          <li><strong>Password:</strong> ********</li>
+          <li>
+            <button class="change-password-btn">
+              Change Password
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
       </div>
  
       <div *ngIf="currentView === 'uploadFeed'">
@@ -219,13 +326,13 @@
             <!-- Name Column -->
             <ng-container matColumnDef="name">
               <th mat-header-cell *matHeaderCellDef>Name</th>
-              <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+              <td mat-cell *matCellDef="let element" (click)="onRowClick(element)">{{ element.name }}</td>
             </ng-container>
  
             <!-- Display Name Column -->
             <ng-container matColumnDef="display_name">
               <th mat-header-cell *matHeaderCellDef>Display Name</th>
-              <td mat-cell *matCellDef="let element">
+              <td mat-cell *matCellDef="let element" (click)="onRowClick(element)">
                 {{ element.display_name }}
               </td>
             </ng-container>
@@ -233,19 +340,19 @@
             <!-- Address Column -->
             <ng-container matColumnDef="address">
               <th mat-header-cell *matHeaderCellDef>Address</th>
-              <td mat-cell *matCellDef="let element">{{ element.address }}</td>
+              <td mat-cell *matCellDef="let element" (click)="onRowClick(element)">{{ element.Address }}</td>
             </ng-container>
  
             <!-- Latitude Column -->
             <ng-container matColumnDef="latitude">
               <th mat-header-cell *matHeaderCellDef>Latitude</th>
-              <td mat-cell *matCellDef="let element">{{ element.latitude }}</td>
+              <td mat-cell *matCellDef="let element" (click)="onRowClick(element)">{{ element.latitude }}</td>
             </ng-container>
  
             <!-- Longitude Column -->
             <ng-container matColumnDef="longitude">
               <th mat-header-cell *matHeaderCellDef>Longitude</th>
-              <td mat-cell *matCellDef="let element">
+              <td mat-cell *matCellDef="let element" (click)="onRowClick(element)">
                 {{ element.longitude }}
               </td>
             </ng-container>
@@ -253,15 +360,25 @@
             <!-- Email Column -->
             <ng-container matColumnDef="email">
               <th mat-header-cell *matHeaderCellDef>Email</th>
-              <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+              <td mat-cell *matCellDef="let element" (click)="onRowClick(element)">{{ element.email }}</td>
             </ng-container>
  
             <!-- Fax Column -->
             <ng-container matColumnDef="fax">
               <th mat-header-cell *matHeaderCellDef>Fax</th>
-              <td mat-cell *matCellDef="let element">{{ element.fax }}</td>
+              <td mat-cell *matCellDef="let element"(click)="onRowClick(element)">{{ element.fax }}</td>
+            </ng-container>
+            <!-- Delete Column -->
+            <ng-container matColumnDef="delete">
+              <th mat-header-cell *matHeaderCellDef>Delete</th>
+              <td mat-cell *matCellDef="let element"> <mat-icon>delete</mat-icon></td>
             </ng-container>
  
+            <!-- Delete Column -->
+            <ng-container matColumnDef="active">
+              <th mat-header-cell *matHeaderCellDef>Active</th>
+              <td mat-cell *matCellDef="let element"> <mat-icon>checkbox</mat-icon></td>
+            </ng-container>
             <!-- Table Headers and Rows -->
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
@@ -272,6 +389,77 @@
             [pageSizeOptions]="[5, 10, 20]"
             showFirstLastButtons
           ></mat-paginator>
+          <!-- Detail Table Below Pagination -->
+<div *ngIf="selectedRow" class="details-table-container">
+  <h4>Details for: {{ selectedRow.name }}</h4>
+  <table class="details-table">
+    <tr>
+      <th>Display name</th>
+      <td>{{ selectedRow.display_name }}</td>
+    </tr>
+    <tr>
+    <tr>
+      <th>Address</th>
+      <td>{{ selectedRow.Address }}</td>
+    </tr>
+    <tr>
+      <th>Latitude</th>
+      <td>{{ selectedRow.latitude }}</td>
+    </tr>
+    <tr>
+      <th>Longitude</th>
+      <td>{{ selectedRow.longitude }}</td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td>{{ selectedRow.email }}</td>
+    </tr>
+    <tr>
+      <th>Fax</th>
+      <td>{{ selectedRow.fax }}</td>
+    </tr>
+    <tr>
+      <th>Sun Facing Amt</th>
+      <td>{{ selectedRow.sun_facing_amt }}</td>
+    </tr>
+    <tr>
+      <th>Optical Facing Amt</th>
+      <td>{{ selectedRow.optical_facing_amt }}</td>
+    </tr>
+    <tr>
+      <th>Phone Number</th>
+      <td>{{ selectedRow.phone_number }}</td>
+    </tr>
+    <tr>
+      <th>Monday Time</th>
+      <td>{{ selectedRow.monday_time }}</td>
+    </tr>
+    <tr>
+      <th>Tuesday Time</th>
+      <td>{{ selectedRow.tuesday_time }}</td>
+    </tr>
+    <tr>
+      <th>Wednesday Time</th>
+      <td>{{ selectedRow.wednesday_time }}</td>
+    </tr>
+    <tr>
+      <th>Thursday Time</th>
+      <td>{{ selectedRow.thursday_time }}</td>
+    </tr>
+    <tr>
+      <th>Friday Time</th>
+      <td>{{ selectedRow.friday_time }}</td>
+    </tr>
+    <tr>
+      <th>Saturday Time</th>
+      <td>{{ selectedRow.saturday_time }}</td>
+    </tr>
+    <tr>
+      <th>Sunday Time</th>
+      <td>{{ selectedRow.sunday_time }}</td>
+    </tr>
+  </table>
+</div>
         </div>
       </div>
  
@@ -279,6 +467,7 @@
         <h2>Download Sample Feed</h2>
         <button (click)="downloadSampleCsv()">Download CSV</button>
       </div>
-    </div>
-  </div>
 </div>
+</div>
+</div>
+

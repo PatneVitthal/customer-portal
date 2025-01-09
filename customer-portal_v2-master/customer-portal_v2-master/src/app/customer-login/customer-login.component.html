@@ -1,23 +1,24 @@
+
 <body class="box-wrapper">
-  <div class="login-container">
-      <div class="login-header">
-        <div class="login-heading">Welcome to Customer Portal </div>
-        <p>Please log in to continue</p>
-      </div>
-     
-        <div class="form-group">
-          <input [(ngModel)]="username" placeholder="Username"  class="input-field"/>
-        </div>
-        <div class="form-group">
-          <input [(ngModel)]="password" placeholder="Password" type="password"  class="input-field" />
-        </div>
-        <div class="form-group">
-          <button (click)="login()" class="btn-primary">Login</button>
-      <div class="login-error" *ngIf="errorMessage">{{ errorMessage }}</div>
-        </div>
-        <div class="text-center">
-          <a href="/forgot-password">Forgot password?</a>
-        </div>
-     
+<div class="login-container">
+    <div class="login-header">
+      <div class="login-heading">Welcome To Customer Portal </div>
+      <p>Please log in to continue</p>
     </div>
-  </body>
+    
+      <div class="form-group">
+        <input [(ngModel)]="username" placeholder="Username"  class="input-field"/>
+      </div>
+      <div class="form-group">
+        <input [(ngModel)]="password" placeholder="Password" type="password"  class="input-field" />
+      </div>
+      <div class="form-group">
+        <button (click)="login()" class="btn-primary">Login</button>
+    <div class="login-error" *ngIf="errorMessage">{{ errorMessage }}</div>
+      </div>
+      <div class="text-center">
+        <a href="/forgot-password">Forgot password?</a>
+      </div>
+    
+  </div>
+</body>
